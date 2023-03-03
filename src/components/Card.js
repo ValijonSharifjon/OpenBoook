@@ -4,6 +4,13 @@ import { useState } from "react";
 const Card=({book})=>{
   const [show,setShow]=useState(false)
   const [bookItem,setItem]=useState()
+  console.log(book)
+  if (book===undefined){
+    return(
+      <><h1>No Result</h1></>
+    )
+  }
+  else{
     return(
       <>
         {
@@ -30,5 +37,6 @@ const Card=({book})=>{
       </>
         
     )
+  }
 }
 export default Card;
