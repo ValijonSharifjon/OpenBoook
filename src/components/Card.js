@@ -1,9 +1,10 @@
 import React from "react";
-import Modal from "./Modal";
-import { useState } from "react";
+
+import { useNavigate } from "react-router-dom";
 const Card=({book})=>{
-  const [show,setShow]=useState(false)
-  const [bookItem,setItem]=useState()
+  let navigate=useNavigate();
+  // const [show,setShow]=useState(false)
+  
   console.log(book)
   if (book===undefined){
     return(
@@ -20,14 +21,13 @@ const Card=({book})=>{
             if (thumbnail!==undefined && amount!==undefined){
               return (
                 <>
-                 <div className="card" onClick={()=>{setShow(true);setItem(item)}}>
+                 <div className="card" key={item.id} onClick={()=>{navigate(`/${item.id}`);}}>
                     <img src={thumbnail} alt=""></img>
                     <div className="bottom">
                        <h3 className="title">{item.volumeInfo.title}</h3>
                        <p className="amount">&#8377;{amount}</p>
                     </div>
                   </div>
-                  <Modal show={show} item={bookItem} onClose={()=>setShow(false)}/>
                 </>
               )
             }
